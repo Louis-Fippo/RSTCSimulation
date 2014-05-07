@@ -1,0 +1,10 @@
+
+#pour chaque fichier de donnée on va tracer les simulations 
+#il s'agit des fichiers FichREP*
+
+for y in FichREP*; do
+
+  Rscript drawSim.R $y;
+   
+
+done

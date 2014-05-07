@@ -1,0 +1,25 @@
+#ce fichier nous permet de tracer les simulations et les expérimentations sur le même graphique pour
+#pour toutes les sortes à surveiller
+#Auteur Fippo Fitime Louis
+#
+ source("aSurveiller.R");
+source("drawSimNew.R");
+#lecture du fichier et simulation
+#################à restorer#########################################
+#args <- commandArgs(TRUE); #on recupère l'argument donné au script
+#print(args[1])
+#JeuxDonne=read.table(args[1], h=T);
+JeuxDonne=read.table("FichREPgen2.out", h=T);
+
+#on extrait les données à surveiller
+JeuxDonneAS=aSurveiller(JeuxDonne);
+
+#on trace les données sans sélectionner celles qui nous intéressent 
+#drawSimNew(JeuxDonne,args[1]);
+drawSimNew(JeuxDonne,"FichREPgen2.out");
+
+
+#on trace les données extraites
+#drawSim(JeuxDonneAS,args[1]);
+
+

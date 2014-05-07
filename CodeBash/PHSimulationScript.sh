@@ -1,0 +1,27 @@
+#ceci est un script pour lancer plusieurs simulations à la fois 
+
+#on va afficher un message pour indiquer chaque étapte
+
+
+
+#on lance la simulation
+for x in *.out; do 
+
+ 
+#on cree le repertoire pour acceuillir les simulations
+
+mkdir REP$x;
+
+  ph-exec -i $x 25 REP$x; 
+ 
+done
+
+
+#on construit les fichiers de donné
+
+for y in REP*; do
+
+  ./SimToFile $y;
+   
+
+done

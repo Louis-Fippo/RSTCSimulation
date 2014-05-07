@@ -1,0 +1,7 @@
+
+print("bonjour Fippo")
+environment()
+print("bonjour le monde")
+source("repere.R")
+repere("ph simulation")
+ls(environment())

@@ -1,0 +1,42 @@
+#Auteur: Fippo Fitime Louis
+#Date:06-11-2013
+#But: fonction permettant de tracer les états des sortes intéressantes
+
+drawAllNew<-function(Donnees,born,nomf)
+{
+  #construction du nom du fichier de sortie
+  bornbis=born;
+  bornbis=as.character(bornbis)
+  nomFichier=paste(c(nomf, bornbis,"pdf"), collapse = ".");
+  #on redirige la sortie de l'image
+  pdf(nomFichier)
+  source("repere.R");
+  source("drawsignalNew.R");
+  par(mfrow=c(2,2));
+  noms=row.names(Donnees);
+  #noms=Donnees[,1];
+  Donnees=Donnees[,-1];
+  print(noms)
+  
+#on définit le type de trait qu'on veut tracer 
+    typetrait=c("red","blue","green","black");  
+
+  #on fixe les bornes
+  Min=born; Max=born+3;
+
+ #on extrait les profils d'expression pour les tracer un par un 
+#on définit un repère
+  repere(noms[1]);
+  for(i in Min:Max)
+  {
+    DonneesInt=Donnees[i,];
+    print(DonneesInt);
+    DonneesInt=DonneesInt[-28];
+    print(DonneesInt);
+    DonneesNumeric=as.numeric(DonneesInt);
+    j=(i%%3)+1;    
+    drawsignalNew(DonneesNumeric,typetrait[j]);
+  }
+  
+  dev.off()
+}

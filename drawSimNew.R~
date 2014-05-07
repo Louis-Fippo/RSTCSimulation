@@ -1,0 +1,21 @@
+#Auteur: Fippo Fitime Louis
+#Date:06-11-2013
+#But: fonction permettant de tracer toutes les simulations effectuées
+
+
+drawSimNew <-function(JeuxDonneASB,nomf)
+{
+  #inclusion des fichiers sources
+ 
+  source("drawAllNew.R");
+  
+  borne=c(1,5,9,13,17,21,25);
+  print("ici")
+  for(i in borne)
+  {
+    
+    drawAllNew(JeuxDonneASB,i,nomf);
+    
+  }
+  
+}

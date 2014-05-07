@@ -1,0 +1,102 @@
+(*dans ce faichier nous allons effectuer un ensemble de test pour voir dans quelles mesures contôler le doublement de fréquence*)
+
+(***les sortes en input***)
+
+process p0 1
+process p1 1
+process p2 1
+process p11 1
+process p12 1
+
+(***sortes de synchronisation***)
+
+process p1_p2 2
+
+(***sortes en sorti***)
+
+process p3 1
+
+(***sortes influencée par p3***)
+
+process p4 1
+
+
+(****** les actions de base ******)
+
+(*
+p0 0 -> p1 1 0 @1.0~50
+p0 1 -> p1 0 1 @1.0~50
+
+
+p1 0 -> p3 1 0 @1.0~50
+p1 1 -> p3 0 1 @1.0~50
+
+p11 0 -> p3 1 0 @1.0~50
+p11 1 -> p3 0 1 @1.0~50
+
+p12 0 -> p3 1 0 @1.0~50
+p12 1 -> p3 0 1 @1.0~50
+
+
+p2 0 -> p3 1 0 @1.0~50
+p2 1 -> p3 0 1 @1.0~50
+
+
+p3 1 -> p4 0 1 @1.0~50
+p3 0 -> p4 1 0 @1.0~50
+
+p3 1 -> p0 1 0 @1.0~50
+p3 1 -> p2 1 0 @1.0~50
+p3 1 -> p11 1 0 @1.0~50
+p3 1 -> p12 1 0 @1.0~50
+
+
+p3 0 -> p0 0 1 @1.0~50
+p3 0 -> p2 0 1 @1.0~50
+p3 0 -> p11 0 1 @10.0~50
+p3 0 -> p12 0 1 @10.0~50
+*)
+
+
+
+(********les actions qui doivent améliorer à travers la sorte de synchronisation**********)
+
+p0 0 -> p1 1 0 @1.0~50
+p0 1 -> p1 0 1 @1.0~50
+
+p1 0 -> p1_p2 1 2 @1.0~50
+p1 1 -> p1_p2 0 1 @1.0~50
+
+p2 0 -> p1_p2 1 2 @1.0~50
+p2 1 -> p1_p2 0 1 @1.0~50
+
+p11 0 -> p1_p2 1 2 @1.0~50
+p11 1 -> p1_p2 0 1 @1.0~50
+
+p12 0 -> p1_p2 1 2 @1.0~50
+p12 1 -> p1_p2 0 1 @1.0~50
+
+p1_p2 2 -> p1_p2 2 0 @1.0~50
+p1_p2 1 -> p3 0 1 @1.0~50
+p1_p2 0 -> p3 1 0 @1.0~50
+
+
+p3 1 -> p4 0 1 @1.0~50
+p3 0 -> p4 1 0 @1.0~50
+
+p3 1 -> p0 1 0 @1.0~50
+p3 1 -> p2 1 0 @1.0~50
+p3 1 -> p11 1 0 @1.0~50
+p3 1 -> p12 1 0 @1.0~50
+
+p3 0 -> p0 0 1 @1.0~50
+p3 0 -> p2 0 1 @1.0~50
+p3 0 -> p11 0 1 @10.0~50
+p3 0 -> p12 0 1 @10.0~50
+
+
+
+
+initial_state p0 1, p1 0, p2 1, p11 1, p12 1, p1_p2 0, p3 0, p4 0 
+
+

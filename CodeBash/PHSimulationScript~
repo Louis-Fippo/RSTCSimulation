@@ -1,0 +1,8 @@
+#ceci est un script pour lancer plusieurs simulations à la fois 
+
+#on va afficher un message pour indiquer chaque étapte
+
+#on liste les fichiers dont on va faire la simulation
+ls
+
+for x in *.out; do ph-exec "$x"; done

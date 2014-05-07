@@ -1,0 +1,11 @@
+#ceci est un simple test pour souvenir comment tous ça fonctionne
+
+echo "Bonjour le monde"
+echo "je suis un géni"
+echo "même si ça ne plait pas à Adrien"
+echo "voici le repertoire de travail"
+pwd
+echo "voici les dossiers qu'il contient"
+ls
+
+echo "good Bye"
